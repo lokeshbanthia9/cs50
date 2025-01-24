@@ -34,8 +34,10 @@ int get_size()
 // Print the block pyramid
 void display_pyramid(int n)
 {
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n; j++) {
+  for (int i = 0; i < n; i++)
+  {
+    for (int j = 0; j < n; j++)
+    {
       if (j >= n - i - 1) 
       {
         printf("#");
