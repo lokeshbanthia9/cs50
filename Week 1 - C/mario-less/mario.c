@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 
 int get_size();
@@ -13,13 +14,21 @@ int main(void)
 int get_size()
 {
   int n;
-  do
+  char ch;
+
+  while (true)
   {
     printf("Height: ");
-    scanf("%d", &n);
-  } while (n <= 0);
-  
-  return n;
+
+    if (scanf("%d", &n) == 1 && n > 0)
+    {
+      return n;
+    }
+    else
+    {
+      while ((ch = getchar()) != '\n' && ch != EOF);
+    }
+  }
 }
 
 // Print the block pyramid
