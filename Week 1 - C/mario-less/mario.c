@@ -31,7 +31,7 @@ int get_size()
   }
 }
 
-// Print the block pyramid
+// Print the pyramid block
 void display_pyramid(int n)
 {
   for (int i = 0; i < n; i++)
