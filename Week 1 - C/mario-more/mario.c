@@ -10,6 +10,7 @@ int main(void)
   display_pyramid(size);
 }
 
+// Get the pyramid size
 int get_size()
 {
   int n;
@@ -18,7 +19,7 @@ int get_size()
   while (true)
   {
     printf("Height: ");
-    
+
     if (scanf("%d", &n) == 1 && n > 0)
     {
       return n;
@@ -30,6 +31,7 @@ int get_size()
   }
 }
 
+// Print the pyramid block
 void display_pyramid(int n)
 {
   for (int i = 0; i < n; i++)
