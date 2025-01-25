@@ -1,3 +1,9 @@
+/**
+ * Prints the minimum number of coins required for the change owed.
+ * 
+ * https://cs50.harvard.edu/x/2025/psets/1/cash/
+ */
+
 #include <stdbool.h>
 #include <stdio.h>
 

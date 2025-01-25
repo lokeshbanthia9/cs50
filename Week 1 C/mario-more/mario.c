@@ -1,3 +1,9 @@
+/**
+ * Prints two blocks of hash pyramid.
+ * 
+ * https://cs50.harvard.edu/x/2025/psets/1/mario/more/
+ */
+
 #include <stdbool.h>
 #include <stdio.h>
 

@@ -1,5 +1,7 @@
 /**
  * Checks the validity of a credit card number and prints whether it is a valid American Exchange, Mastercard or Visa card number.
+ * 
+ * https://cs50.harvard.edu/x/2025/psets/1/credit/
  */
 
 #include <stdbool.h>
