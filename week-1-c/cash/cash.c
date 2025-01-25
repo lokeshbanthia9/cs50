@@ -7,8 +7,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-const int change_list_desc[] = {25, 10, 5, 1};
 const int number_of_change = 4;
+const int change_list_desc[] = {25, 10, 5, 1};
 
 int get_amount();
 int calculate_minimum_coins(int amount);
