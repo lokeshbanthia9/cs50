@@ -8,17 +8,14 @@
 long long get_card_number();
 int calculate_card_number_digits(long long n);
 bool validate_card_number(long long num, int digits);
+bool is_amex(long long num, int digits);
+bool is_mastercard(long long num, int digits);
+bool is_visa(long long num, int digits);
 
 int main(void)
 {
   long long card_number = get_card_number();
-
   int digits = calculate_card_number_digits(card_number);
-  if (digits != 13 && digits != 15 && digits != 16)
-  {
-    printf("INVALID\n");
-    return 1;
-  }
 
   if (!validate_card_number(card_number, digits))
   {
@@ -26,40 +23,26 @@ int main(void)
     return 1;
   }
 
-  // Find the first two digits of the card number
-  while (card_number > 100)
-  {
-    card_number /= 10;
-  }
-
-  // Check for American Exchange card
-  if (digits == 15 && (card_number == 34 || card_number == 37))
+  if (is_amex(card_number, digits))
   {
     printf("AMEX\n");
     return 0;
   }
-
-  // Check for Mastercard card
-  if (digits == 16 && (card_number >= 51 && card_number <= 55))
+  else if (is_mastercard(card_number, digits))
   {
-    
     printf("MASTERCARD\n");
     return 0;
   }
-
-  // Find the first digit of the card number
-  card_number /= 10;
-
-  // CHeck for Visa card
-  if ((digits == 13 || digits == 16) && card_number == 4)
+  else if (is_visa(card_number, digits))
   {
     printf("VISA\n");
     return 0;
   }
-
-  // When all cases fail
-  printf("INVALID\n");
-  return 1;
+  else
+  {
+    printf("INVALID\n");
+    return 1;
+  }
 }
 
 
@@ -84,7 +67,7 @@ long long get_card_number()
   }
 }
 
-// Calculate the number of digits in the long number
+// Calculate the number of digits in the number
 int calculate_card_number_digits(long long num)
 {
   int digits = 0;
@@ -121,4 +104,54 @@ bool validate_card_number(long long num, int digits)
   }
 
   return sum % 10 == 0;
+}
+
+// Returns the first two digits of a positive number
+int get_first_two_digits(long long num)
+{
+  while (num > 100)
+  {
+    num /= 10;
+  }
+
+  return num;
+}
+
+// Checks if the number is a valid American Exchange card number
+bool is_amex(long long num, int digits)
+{
+  int first_two_digits = get_first_two_digits(num);
+
+  if (digits == 15 && (first_two_digits == 34 || first_two_digits == 37))
+  {
+    return true;
+  }
+
+  return false;
+}
+
+// Checks if the number is a valid Mastercard card number
+bool is_mastercard(long long num, int digits)
+{
+  int first_two_digits = get_first_two_digits(num);
+
+  if (digits == 16 && (first_two_digits >= 51 && first_two_digits <= 55))
+  {
+    return true;
+  }
+
+  return false;
+}
+
+// Checks if the number is a valid Visa card number
+bool is_visa(long long num, int digits)
+{
+  int first_digit = get_first_two_digits(num) / 10;
+
+  if ((digits == 13 || digits == 16) && first_digit == 4)
+  {
+    return true;
+  }
+
+  return false;
 }
